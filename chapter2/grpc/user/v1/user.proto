@@ -1,0 +1,23 @@
+syntax = "proto3";
+package user.v1;
+option go_package = "example.com/testing/protos/user";
+
+message User = {
+  int64 id = 1;
+  string username = 2;
+  string email = 3;
+}
+
+// The User service definition
+service UserService {
+  // Create a user
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserResponse {
+  bool success = 1;
+}
